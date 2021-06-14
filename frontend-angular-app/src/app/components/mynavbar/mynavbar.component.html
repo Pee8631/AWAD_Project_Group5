@@ -1,17 +1,22 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a routerLink="products" class="navbar-brand btn btn-dark">Home</a>
+    <a routerLink="/products" class="navbar-brand btn btn-dark">Home</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a (click)="AddProduct()" class="btn btn-dark">Add Products</a>
-        </li>
-        <li class="nav-item">
-          <a (click)="ShowProducts()" class="btn btn-dark">Show Product</a>
-        </li>
-      </ul>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a routerLink="/addproducts" routerLinkActive="active" class="btn btn-dark">Add Products</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/showproducts" routerLinkActive="active" class="btn btn-dark">Show Product</a>
+            </li>
+        </ul>
+        <a routerLink="/cart" class="btn btn-dark">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+            <span class="badge badge-info"></span>
+        </a>
     </div>
 </nav>

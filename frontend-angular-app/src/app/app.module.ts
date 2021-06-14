@@ -30,7 +30,7 @@ import { MynavbarComponent } from './components/mynavbar/mynavbar.component';
     SignupComponent,
     StatusproductsComponent,
     AddressComponent,
-    MynavbarComponent,
+    MynavbarComponent
 //    NavbarComponent
   ],
   imports: [

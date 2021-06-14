@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {productsType} from '../../products.model';
 
 @Component({
   selector: 'app-mynavbar',
@@ -8,16 +9,11 @@ import { Router } from '@angular/router';
 })
 export class MynavbarComponent implements OnInit {
 
+  cart : productsType = []
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  AddProduct(){
-    this.router.navigate(['/addproducts'])
-  }
-  ShowProducts(){
-    this.router.navigate(['/showproducts'])
   }
 
 }
