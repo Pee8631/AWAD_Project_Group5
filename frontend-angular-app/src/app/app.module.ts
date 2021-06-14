@@ -14,6 +14,8 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { StatusproductsComponent } from './components/statusproducts/statusproducts.component';
 import { AddressComponent } from './components/address/address.component';
+import { MynavbarComponent } from './components/mynavbar/mynavbar.component';
+//import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AddressComponent } from './components/address/address.component';
     SigninComponent,
     SignupComponent,
     StatusproductsComponent,
-    AddressComponent
+    AddressComponent,
+    MynavbarComponent,
+//    NavbarComponent
   ],
   imports: [
     BrowserModule,

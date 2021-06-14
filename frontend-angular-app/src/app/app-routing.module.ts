@@ -4,6 +4,7 @@ import { AddressComponent } from './components/address/address.component';
 import { SigninComponent } from './components/signin/signin.component' ;
 import { SignupComponent } from './components/signup/signup.component' ;
 import { ProductsComponent } from './components/products/products.component' ;
+import { ShowproductsComponent } from './components/showproducts/showproducts.component';
 import { AddproductsComponent } from './components/addproducts/addproducts.component' ;
 import { CartComponent } from './components/cart/cart.component' ;
 import { PaymentComponent } from './components/payment/payment.component' ;
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'statusproducts', component: StatusproductsComponent},
   {path:'profile', component: ProfileComponent},
   {path:'address', component: AddressComponent},
+  {path:'showproducts', component: ShowproductsComponent},
   {path:'',
     redirectTo: 'signin',
     pathMatch: 'full'
