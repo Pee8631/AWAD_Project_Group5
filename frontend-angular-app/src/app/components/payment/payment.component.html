@@ -1,1 +1,64 @@
-<p>payment works!</p>
+<app-mynavbar></app-mynavbar>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Payment</h4>
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                <form [formGroup]="paymentForm">
+                    <div class="card">
+                        <div class="card-header">
+                            Payment Form
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Bank Account:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" formControlName='bank'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Account Number:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" formControlName='accountID'>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Account Name:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" formControlName='accountName'>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12" >
+                                    <button type="button" class="btn btn-primary">Submit</button>&nbsp;
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8">
+
+            </div>
+        </div>
+    </div>
+</div>
