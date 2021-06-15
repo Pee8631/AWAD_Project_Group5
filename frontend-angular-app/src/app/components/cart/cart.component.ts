@@ -10,16 +10,13 @@ export class CartComponent implements OnInit {
 
   cart : productsType = []
   constructor(private cartService: CartService) { 
-    //this.cart = this.cartService.getCart();
+    this.cart = this.cartService.getCart();
   }
 
   ngOnInit(): void {
   }
-  getCounter(){
-    //return this.cartService.getCounter();
-  }
 
-  getSumPeice(){
-    //return this.cartService.gettotal();
+  getsumPrice(){
+    return this.cartService.getsumPrice();
   }
 }

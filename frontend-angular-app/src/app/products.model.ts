@@ -1,8 +1,12 @@
 interface Products {
-    p_id: number,
-    p_name: string,
-    p_quantity: number,
-    p_price: number
+    type: string,
+    id: number,
+    name: string,
+    detail: string,
+    quantity: number,
+    price: number,
+    file: String,
+    img: String
 }
 
 export type productsType = Products[];

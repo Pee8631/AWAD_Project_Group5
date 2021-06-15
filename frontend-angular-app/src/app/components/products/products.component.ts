@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { MynavbarComponent } from '../mynavbar/mynavbar.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +11,7 @@ export class ProductsComponent implements OnInit {
 
   products: any
 
-  constructor(private ps : ProductService) {
+  constructor(private ps : ProductService, private cartService : CartService ) {
     this.onLoading();
   }
 
@@ -31,6 +31,8 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  
+  addToCart(id:number){
+    this.cartService.add(id)
+  }
 
 }

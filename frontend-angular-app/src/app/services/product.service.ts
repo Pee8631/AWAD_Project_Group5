@@ -28,5 +28,11 @@ export class ProductService {
         return this.products;
       }));
   }
+
+  getSomeproducts(p_id:number){
+    console.log(this.products[p_id]);
+    return this.products[p_id];
+  }
+
 }
 
