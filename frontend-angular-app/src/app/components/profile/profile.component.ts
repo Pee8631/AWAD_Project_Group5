@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 interface user_profile{
   name: string,
+  gender:string,
   email: string,
   phone: string,
   img: string
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor() { 
     this.profile = {
       name: '',
+      gender:'',
       email: '',
       phone: '',
       img: 'https://kimtaehyung768069742.files.wordpress.com/2018/09/e0b981e0b897e0b8aee0b8a2e0b8ade0b887e0b8ade0b988e0b8b2e0b8b2.jpg',

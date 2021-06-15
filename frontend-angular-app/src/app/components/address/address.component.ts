@@ -12,6 +12,9 @@ export class AddressComponent implements OnInit {
 
   addressForm = new FormGroup({
     address: new FormControl('',[Validators.required]),
+    subdistrict: new FormControl('',[Validators.required]),
+    district: new FormControl('',[Validators.required]),
+    province: new FormControl('',[Validators.required]),
     postal: new FormControl('',[Validators.required]),
   });
 
