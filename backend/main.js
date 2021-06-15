@@ -24,6 +24,23 @@ const userSchema = Schema({
     collection: 'products'
 });
 
+var Schema = require("mongoose").Schema;
+const paymentSchema = Schema({
+    bank: String,
+    accountID: String,
+    accountName: String
+   
+}, {
+    collection: 'payment'
+});
+
+
+let Payment 
+try {
+    Payment  = mongoose.model('payment')
+} catch (error) {
+    Payment  = mongoose.model('payment',paymentSchema);
+}
 
 
 let Product 
@@ -32,10 +49,6 @@ try {
 } catch (error) {
     Product = mongoose.model('products', userSchema);
 }
-
-
-
-
 
 
 
@@ -75,6 +88,22 @@ const addProduct = (productData) => {
     });
 }
 
+const addPayment = (paymentdata) => {
+    return new Promise ((resolve, reject) => {
+        var payments = new Payment(
+            paymentdata
+        );
+        payments.save((err, data) => {
+            if(err){
+                reject(new Error('Cannot insert payment to DB!'));
+            }else{
+                resolve({message: 'payment added successfully'});
+            }
+        });
+    });
+}
+
+
 
 
 
@@ -95,6 +124,14 @@ const getProduct = () => {
     });
 }
 
+/*const deleteProduct = () => {
+    return new Promise ((resolve,reject) => {
+        Product.delete({}, (err, data) =>{
+
+        })
+    })
+}*/
+
 expressApp.post('/products/add',(req,res) =>{
     console.log('add');
     addProduct(req.body)
@@ -107,6 +144,17 @@ expressApp.post('/products/add',(req,res) =>{
         })
 });
 
+expressApp.post('/payment/add',(req,res) =>{
+    console.log('add');
+    addPayment(req.body)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
 
 
 
