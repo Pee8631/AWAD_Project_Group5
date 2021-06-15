@@ -36,7 +36,7 @@
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" name="sex" value="Female"
-                                        formControlName='sex'>Female
+                                        formControlName='gender'>Female
                                 </label>
                             </div>
                         </div><br />
@@ -53,8 +53,9 @@
                         </div><br />
 
                         <br /><br />
-                        <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
-                        <button type="reset" class="btn btn-danger">Reset</button>
+                        <button type="submit" class="btn btn-primary" (click)= " signup()" >Submit</button>&nbsp;
+                        <button type="reset" class="btn btn-danger">Reset</button>&nbsp;
+                        <button type="button" class="btn btn-primary" (click) = "signin()" >Signin</button>
                     </form>
                 </div>
             </div>

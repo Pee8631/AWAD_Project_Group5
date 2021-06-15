@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -22,14 +23,14 @@ export class AddproductsComponent implements OnInit {
     img: new FormControl('',[Validators.required]),
   });
 
-  //previewLoaded: boolean = false;
+  previewLoaded: boolean = false;
 
-  constructor() { }
+  constructor(private ps : ProductService ,private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  /*addProduct(){
+  addProduct(){
     this.ps.addProduct(this.productForm.value).subscribe(
       data => {
         console.log(data)
@@ -39,12 +40,12 @@ export class AddproductsComponent implements OnInit {
       err =>{
         console.log(err);
       });
-  }*/
+  }
 
-  /*onChangeImg(e:any){
+  onChangeImg(e:any){
     if(e.target.files.length > 0){
       const file = e.target.files[0];
-      var pattern = /image-*//*;
+      var pattern = /image-*/;
       const reader = new FileReader();
       if(!file.type.match(pattern)) {
         alert('invalid format');
@@ -52,7 +53,7 @@ export class AddproductsComponent implements OnInit {
       }else{
         reader.readAsDataURL(file);
         reader.onload = () => {
-          //this.previewLoaded = true;
+          this.previewLoaded = true;
           this.productForm.patchValue({
             img: reader.result
           });
@@ -60,11 +61,14 @@ export class AddproductsComponent implements OnInit {
       }
     }
   }
-  */
 
   resetForm(){
     this.productForm.reset();
-    //this.previewLoaded = false;
+    this.previewLoaded = false;
+  }
+
+  showproduct(){
+    this.router.navigate(['/showproducts'])
   }
 
 }

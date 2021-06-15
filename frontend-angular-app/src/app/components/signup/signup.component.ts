@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,15 +17,34 @@ export class SignupComponent implements OnInit {
     gender: new FormControl(''),
     sex: new FormControl(''),
     email: new FormControl('',[Validators.required, Validators.email]),
+    Tel : new FormControl('')
 });
 get email() {return this.profileForm.get('email');
 }
-get stdid() {return this.profileForm.get('stdid');
-}
 
-  constructor() { }
+
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  signup(){
+    console.log(this.profileForm.value);
+    this.auth.signUp(this.profileForm.value).subscribe(
+      data => {
+        if(data.message)
+          alert(data.message);
+        
+      },err => {
+        console.log(err);
+
+      });
+  }
+  
+    signin(){
+      this.router.navigate(['./signin']);
+    }
+  
+
 
 }
