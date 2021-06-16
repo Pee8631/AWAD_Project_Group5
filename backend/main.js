@@ -34,6 +34,25 @@ const paymentSchema = Schema({
     collection: 'payment'
 });
 
+var Schema = require("mongoose").Schema;
+const addressSchema = Schema({
+    Address: String,
+    Subdistrict: String,
+    District: String,
+    Province: String,
+    PostalNumber: String
+   
+}, {
+    collection: 'address'
+});
+
+let Address 
+try {
+    Address  = mongoose.model('address')
+} catch (error) {
+    Address  = mongoose.model('address',addressSchema);
+}
+
 
 let Payment 
 try {
@@ -102,6 +121,22 @@ const addPayment = (paymentdata) => {
         });
     });
 }
+
+const addAddress = (address) => {
+    return new Promise ((resolve, reject) => {
+        var addresss = new Address(
+            address
+        );
+        addresss.save((err, data) => {
+            if(err){
+                reject(new Error('Cannot insert address to DB!'));
+            }else{
+                resolve({message: 'address added successfully'});
+            }
+        });
+    });
+}
+
 
 const putProduct = () => {
     return new Promise ((resolve,reject) => {
@@ -172,6 +207,18 @@ expressApp.delete('/products/delete/:id',(req,res) =>{
     const pid = req.params.id
     console.log('delete');
     deleteProduct(pid)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+expressApp.post('/address/add',(req,res) =>{
+    console.log('add');
+    addAddress(req.body)
         .then(result => {
             console.log(result);
             res.status(200).json(result);

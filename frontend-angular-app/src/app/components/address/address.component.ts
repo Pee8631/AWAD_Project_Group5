@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddressService } from 'src/app/services/address.service';
 
 @Component({
   selector: 'app-address',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddressComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ad: AddressService) { }
 
   addressForm = new FormGroup({
     address: new FormControl('',[Validators.required]),
@@ -19,6 +20,18 @@ export class AddressComponent implements OnInit {
   });
 
   ngOnInit(): void {
+  }
+
+  addAddress(){
+    this.ad.addAddress(this.addressForm.value).subscribe(
+      data => {
+        console.log(data)
+        alert('successfully');
+        this.addressForm.reset();
+      },
+      err =>{
+        console.log(err);
+      });
   }
 
   resetForm(){
