@@ -31,19 +31,21 @@ export class ShowproductsComponent implements OnInit {
     }
   }
 
-  deleteProduct(){
-    this.ps.deleteProducts().subscribe(
+  deleteProduct(id : number){
+    try {
+    this.ps.deleteProducts(id).subscribe(
       data => {
-        console.log(data)
-        
-        
-       
+        console.log(data);
+        this.onLoading();
+        this.resetForm();
       },
       err =>{
         console.log(err);
 
       });
-      
+    }catch (error) {
+      console.log(error);
+    }
   }
 
   resetForm(){

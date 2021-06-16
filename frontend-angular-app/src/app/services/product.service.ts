@@ -30,8 +30,9 @@ export class ProductService {
   }
 
 
-  deleteProducts(){
-    return this.http.delete<any>('http://localhost:3000/products/delete')
+  deleteProducts(id: number){
+    console.log(id)
+    return this.http.delete<any>('http://localhost:3000/products/delete/' + id)
       .pipe(map(data => {
         return data;
         

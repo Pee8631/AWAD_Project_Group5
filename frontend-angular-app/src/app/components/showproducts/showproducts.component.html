@@ -27,7 +27,7 @@
                             <td>{{item.quantity}}</td>
                             <td>{{item.price}}</td>
                             <td><img [src]="item.img" style="height:150px;"></td>
-                            <td><button type="reset" class="btn btn-primary" (click) = "deleteProduct()">Delete</button></td>
+                            <td><button type="reset" class="btn btn-primary" (click) = "deleteProduct(item.id)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>

@@ -121,10 +121,6 @@ const putProduct = () => {
 
 }
 
-
-
-
-
 const getProduct = () => {
     return new Promise ((resolve,reject) => {
         Product.find({}, (err, data) => {
@@ -143,9 +139,9 @@ const getProduct = () => {
 }
 
 
-const deleteProduct = () => {
+const deleteProduct = (pid) => {
     return new Promise ((resolve,reject) => {
-        Product.deleteOne({}, (err, data) =>{
+            Product.deleteOne({id: pid}, (err, data) =>{
             if(err){
                 reject(new Error('delete product!'));
             }else{
@@ -172,9 +168,10 @@ expressApp.put('/products/put',(req,res) =>{
         })
 });
 
-expressApp.delete('/products/delete',(req,res) =>{
+expressApp.delete('/products/delete/:id',(req,res) =>{
+    const pid = req.params.id
     console.log('delete');
-    deleteProduct(req.body)
+    deleteProduct(pid)
         .then(result => {
             console.log(result);
             res.status(200).json(result);
@@ -207,8 +204,6 @@ expressApp.post('/payment/add',(req,res) =>{
             console.log(err);
         })
 });
-
-
 
 expressApp.get('/products/get',(req,res) =>{
     console.log('get');
