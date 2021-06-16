@@ -49,6 +49,35 @@ const insertUser = (dataUser) => {
     });
 }
 
+router.get('/profile', (req,res) => {
+    console.log('get');
+    getuser(req.body)
+    .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+});
+
+const getuser = () => {
+    return new Promise ((resolve,reject) => {
+        User.find({ }, (err, data) => {
+            if(err){
+                reject(new Error('Cannot get user!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot get user!'));
+                }
+                
+            }
+        })
+    });
+}
+
 
 
 

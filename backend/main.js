@@ -36,11 +36,11 @@ const paymentSchema = Schema({
 
 var Schema = require("mongoose").Schema;
 const addressSchema = Schema({
-    Address: String,
-    Subdistrict: String,
-    District: String,
-    Province: String,
-    PostalNumber: String
+    address: String,
+    subdistrict: String,
+    district: String,
+    province: String,
+    postal: String
    
 }, {
     collection: 'address'
@@ -172,23 +172,22 @@ const addAddress = (address) => {
 }
 
 
-const putProduct = () => {
-    return new Promise ((resolve,reject) => {
-        Product.put({ }, (err, data) => {
-            if(err){
-                reject(new Error('Cannot update product!'));
-            }else{
-                if(data){
-                    resolve(data)
-                }else{
-                    reject(new Error('Cannot update product!'));
-                }
-                
-            }
-        })
+const updateProduct = async (id, data) => {
+    return new Promise((resolve, reject) => {
+      if (id == undefined) {
+        reject(new Error("Cannot update Product"));
+      }
+      Product.updateOne({ _id: id }, { $set: data }, (err, data) => {
+        if (err) {
+          reject(new Error("Cannot update Product"));
+        } else {
+          resolve({ message: "Product update successfully." });
+        }
+      });
     });
+  };
 
-}
+
 
 const getProduct = () => {
     return new Promise ((resolve,reject) => {
@@ -226,6 +225,41 @@ const getProductID = (id) => {
 }
 
 
+const getAddress = (add) => {
+    return new Promise ((resolve,reject) => {
+        Address.find({address : add}, (err, data) => {
+            if(err){
+                reject(new Error('Cannot get address!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot get address!'));
+                }
+                
+            }
+        })
+    });
+}
+
+const getPayment = (banks) => {
+    return new Promise ((resolve,reject) => {
+        Payment.find({bank : banks}, (err, data) => {
+            if(err){
+                reject(new Error('Cannot get payment!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot get payment!'));
+                }
+                
+            }
+        })
+    });
+}
+
+
 const deleteProduct = (pid) => {
     return new Promise ((resolve,reject) => {
             Product.deleteOne({id: pid}, (err, data) =>{
@@ -244,12 +278,27 @@ const deleteProduct = (pid) => {
     })
 }
 
+expressApp.get('/payment/getbank/:bank',(req,res) =>{
+    const banks = req.params.bank
+    console.log('get');
+    getPayment(banks)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
 
 
 
 expressApp.put('/products/put',(req,res) =>{
+    const id = req.params.id
     console.log('put');
-    putProduct(req.body)
+  
+    updateProduct(req.body[0].id, req.body[1])
         .then(result => {
             console.log(result);
             res.status(200).json(result);
@@ -274,8 +323,21 @@ expressApp.delete('/products/delete/:id',(req,res) =>{
 
 expressApp.get('/products/getid/:id',(req,res) =>{
     const id = req.params.id
-    console.log('delete');
+    console.log('get');
     getProductID(id)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+expressApp.get('/address/getadd/:address',(req,res) =>{
+    const add = req.params.address
+    console.log('get');
+    getAddress(add)
         .then(result => {
             console.log(result);
             res.status(200).json(result);

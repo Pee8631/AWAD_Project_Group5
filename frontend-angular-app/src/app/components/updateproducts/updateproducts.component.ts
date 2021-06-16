@@ -48,6 +48,7 @@ export class UpdateproductsComponent implements OnInit {
       data => {
         console.log(data)
         alert('Product updated successfully');
+        //this.productForm.reset();
         this.router.navigate(['/showproducts']);
       },
       err =>{
@@ -99,5 +100,8 @@ export class UpdateproductsComponent implements OnInit {
       }
     }
   }
+
+
+  
 
 }

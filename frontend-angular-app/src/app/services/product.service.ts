@@ -49,8 +49,8 @@ export class ProductService {
     return this.updateid;
   }
 
-  putProducts(id: number,body: any){
-    return this.http.put<any>('http://localhost:3000/products/put/' + id, body)
+  putProducts(id: number, body: any){
+    return this.http.put<any>('http://localhost:3000/products/put' + id, body)
       .pipe(map(data => {
         if (data) {
           this.products = data;
@@ -59,6 +59,8 @@ export class ProductService {
         return this.products;
       }));
   }
+
+ 
 
   deleteProducts(id: number){
     console.log(id)

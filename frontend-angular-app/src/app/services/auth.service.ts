@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  user: any;
 
   constructor(private http: HttpClient, public local: LocalStorageService) { }
 
@@ -22,5 +23,17 @@ export class AuthService {
   }
   signUp(authData: any){
     return this.http.post<any>('http://localhost:3000/user/signup', authData);
+  }
+
+
+  getProfile(){
+    return this.http.get<any>('http://localhost:3000/user/profile')
+      .pipe(map(data => {
+        if (data) {
+          this.user = data;
+          console.log(this.user);
+        }
+        return this.user;
+      }));
   }
 }
