@@ -172,12 +172,12 @@ const addAddress = (address) => {
 }
 
 
-const updateProduct = async (id, data) => {
+const updateProduct = async (id,data) => {
     return new Promise((resolve, reject) => {
       if (id == undefined) {
-        reject(new Error("Cannot update Product"));
+        reject(new Error("Cannot update ProductID"));
       }
-      Product.updateOne({ _id: id }, { $set: data }, (err, data) => {
+      Product.updateOne({ id: id }, { $set: data }, (err, data) => {
         if (err) {
           reject(new Error("Cannot update Product"));
         } else {
@@ -294,11 +294,12 @@ expressApp.get('/payment/getbank/:bank',(req,res) =>{
 
 
 
-expressApp.put('/products/put',(req,res) =>{
+expressApp.put('/products/put/:id',(req,res) =>{
     const id = req.params.id
+    //const name = req.params.name
     console.log('put');
   
-    updateProduct(req.body[0].id, req.body[1])
+    updateProduct(id, req.body)
         .then(result => {
             console.log(result);
             res.status(200).json(result);

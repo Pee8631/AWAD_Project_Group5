@@ -50,7 +50,7 @@ export class ProductService {
   }
 
   putProducts(id: number, body: any){
-    return this.http.put<any>('http://localhost:3000/products/put' + id, body)
+    return this.http.put<any>('http://localhost:3000/products/put/' + id, body)
       .pipe(map(data => {
         if (data) {
           this.products = data;
