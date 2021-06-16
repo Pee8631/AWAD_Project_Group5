@@ -46,6 +46,24 @@ const addressSchema = Schema({
     collection: 'address'
 });
 
+var Schema = require("mongoose").Schema;
+const statusSchema = Schema({
+    type: String,
+    name: String,
+    img: String,
+    status: String
+   
+}, {
+    collection: 'status'
+});
+
+let Status 
+try {
+    Status  = mongoose.model('status')
+} catch (error) {
+    Status  = mongoose.model('status',statusSchema);
+}
+
 let Address 
 try {
     Address  = mongoose.model('address')
@@ -122,6 +140,22 @@ const addPayment = (paymentdata) => {
     });
 }
 
+
+const addStatus = (statusdata) => {
+    return new Promise ((resolve, reject) => {
+        var status = new Status(
+            statusdata
+        );
+        status.save((err, data) => {
+            if(err){
+                reject(new Error('Cannot insert status to DB!'));
+            }else{
+                resolve({message: 'status added successfully'});
+            }
+        });
+    });
+}
+
 const addAddress = (address) => {
     return new Promise ((resolve, reject) => {
         var addresss = new Address(
@@ -172,6 +206,7 @@ const getProduct = () => {
         })
     });
 }
+
 
 const getProductID = (id) => {
     return new Promise ((resolve,reject) => {
@@ -253,6 +288,18 @@ expressApp.get('/products/getid/:id',(req,res) =>{
 expressApp.post('/address/add',(req,res) =>{
     console.log('add');
     addAddress(req.body)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+expressApp.post('/status/add',(req,res) =>{
+    console.log('add');
+    addStatus(req.body)
         .then(result => {
             console.log(result);
             res.status(200).json(result);
