@@ -37,15 +37,22 @@ export class AddproductsComponent implements OnInit {
 
 
   addProduct(){
-    this.ps.addProduct(this.productForm.value).subscribe(
-      data => {
-        console.log(data)
-        alert('Product added successfully');
-        this.productForm.reset();
-      },
-      err =>{
-        console.log(err);
-      });
+    if (this.productForm.value.type != "" && this.productForm.value.name != "" && this.productForm.value.id != "" 
+    && this.productForm.value.name != "" && this.productForm.value.detail != "" && this.productForm.value.quantity != "" 
+    && this.productForm.value.price != "" && this.productForm.value.img != ""){
+      this.ps.addProduct(this.productForm.value).subscribe(
+        data => {
+          console.log(data)
+          alert('เพิ่มสินค้าเรียบร้อยแล้ว');
+          this.productForm.reset();
+        },
+        err =>{
+          console.log(err);
+        });
+    }
+    else{
+      alert('กรุณาใส่ข้อมูลให้ครบทุกช่อง');
+    }
   }
 
   onChangeImg(e:any){

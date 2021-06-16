@@ -37,12 +37,13 @@ export class UpdateproductsComponent implements OnInit {
   }
 
   updateProduct() {
-    if (this.productForm.value.name != "" || this.productForm.value.id != "" || this.productForm.value.name != "" 
-    || this.productForm.value.detail != "" || this.productForm.value.quantity != "" || this.productForm.value.price != "") {
+    if (this.productForm.value.type != "" && this.productForm.value.name != "" && this.productForm.value.id != "" 
+    && this.productForm.value.name != "" && this.productForm.value.detail != "" && this.productForm.value.quantity != "" 
+    && this.productForm.value.price != "" && this.productForm.value.img != "") {
       this.ps.putProducts(this.numid, this.productForm.value).subscribe(
         data => {
           console.log(data)
-          alert('Product updated successfully');
+          alert('แก้ไขสินค้าเรียบร้อยแล้ว');
           //this.productForm.reset();
           this.router.navigate(['/showproducts']);
         },
@@ -51,7 +52,7 @@ export class UpdateproductsComponent implements OnInit {
         });
     }
     else{
-      alert('Please put every fleid')
+      alert('กรุณาใส่ข้อมูลให้ครบทุกช่อง')
     }
   }
 
