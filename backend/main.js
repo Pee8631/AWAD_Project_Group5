@@ -103,6 +103,24 @@ const addPayment = (paymentdata) => {
     });
 }
 
+const putProduct = () => {
+    return new Promise ((resolve,reject) => {
+        Product.put({ }, (err, data) => {
+            if(err){
+                reject(new Error('Cannot update product!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot update product!'));
+                }
+                
+            }
+        })
+    });
+
+}
+
 
 
 
@@ -124,13 +142,47 @@ const getProduct = () => {
     });
 }
 
-/*const deleteProduct = () => {
+
+const deleteProduct = () => {
     return new Promise ((resolve,reject) => {
-        Product.delete({}, (err, data) =>{
+        Product.deleteOne({}, (err, data) =>{
+            if(err){
+                reject(new Error('delete product!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot delete product!'));
+                }
+                
+            }
 
         })
     })
-}*/
+}
+expressApp.put('/products/put',(req,res) =>{
+    console.log('put');
+    putProduct(req.body)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+expressApp.delete('/products/delete',(req,res) =>{
+    console.log('delete');
+    deleteProduct(req.body)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
 
 expressApp.post('/products/add',(req,res) =>{
     console.log('add');

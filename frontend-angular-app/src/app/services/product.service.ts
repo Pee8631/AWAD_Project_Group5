@@ -29,9 +29,13 @@ export class ProductService {
       }));
   }
 
-  deleteProducts(id:number){
-    this.http.delete<any>('http://localhost:3000/products/delete?:id')
-    
+
+  deleteProducts(){
+    return this.http.delete<any>('http://localhost:3000/products/delete')
+      .pipe(map(data => {
+        return data;
+        
+      }));
   }
 
   getSomeproducts(id:number){

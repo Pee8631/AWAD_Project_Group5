@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ShowproductsComponent implements OnInit {
 
   products: any
+  previewLoaded: boolean = false;
 
   constructor(private ps : ProductService) {
     this.onLoading();
@@ -30,12 +31,23 @@ export class ShowproductsComponent implements OnInit {
     }
   }
 
-  deleteField(id : number){
-    try {
-      this.ps.deleteProducts(id);
-    }catch (error) {
-      console.log(error)
-    }
+  deleteProduct(){
+    this.ps.deleteProducts().subscribe(
+      data => {
+        console.log(data)
+        
+        
+       
+      },
+      err =>{
+        console.log(err);
+
+      });
+      
+  }
+
+  resetForm(){
+    this.previewLoaded = false;
   }
 
 }
