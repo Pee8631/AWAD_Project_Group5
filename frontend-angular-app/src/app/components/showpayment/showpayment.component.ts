@@ -8,7 +8,9 @@ import { PaymentService } from 'src/app/services/payment.service';
 })
 export class ShowpaymentComponent implements OnInit {
 
-  constructor(private ps: PaymentService) { }
+  constructor(private ps: PaymentService) {
+    this.onLoading();
+   }
 
   payment : any ;
 

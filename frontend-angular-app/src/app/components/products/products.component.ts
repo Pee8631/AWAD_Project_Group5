@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
+import { MynavbarComponent } from '../mynavbar/mynavbar.component';
 
 @Component({
   selector: 'app-products',
@@ -11,11 +12,20 @@ export class ProductsComponent implements OnInit {
 
   products: any
 
-  constructor(private ps : ProductService, private cartService : CartService ) {
+  @ViewChild(MynavbarComponent)
+  MynavbarComponent !: MynavbarComponent
+
+  deletecartnum: number = 0;
+
+  constructor(private ps : ProductService, private cartService : CartService) {
     this.onLoading();
+    
   }
 
-  ngOnInit(): void { }
+
+  ngOnInit(): void { 
+    
+  }
 
   onLoading(){
     try {
@@ -32,7 +42,9 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(id:number){
-    this.cartService.add(id)
+    this.cartService.add(id);
+    
   }
+
 
 }

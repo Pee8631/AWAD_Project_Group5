@@ -11,13 +11,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
 
   profileForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    name: new FormControl(''),
-    gender: new FormControl(''),
-    sex: new FormControl(''),
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    sex: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    Tel: new FormControl('')
+    Tel: new FormControl('', [Validators.required])
   });
   get email() {
     return this.profileForm.get('email');

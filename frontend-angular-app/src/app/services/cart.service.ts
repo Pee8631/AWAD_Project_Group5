@@ -7,11 +7,11 @@ import { ProductService } from './product.service'
 })
 export class CartService {
 
-  counter:number = 0;
+  counter : number = 0;
   sumPrice: number = 0;
   quantitynum: number = 0;
   cart: productsType = [];
-  backupcart: productsType = [];
+  backupcart: any;
 
   constructor(private productService: ProductService) { }
 
@@ -27,16 +27,14 @@ export class CartService {
     }
   }
 
-  deleteCart(id: number,price: number){
-    console.log(id);
-    //console.log(this.productService.getSomeproducts(id).quantity);
+  deleteCart(){
+    this.backupcart = this.cart.pop();
+    //console.log(this.backupcart.price);
     //this.quantitynum = this.productService.getSomeproducts(id).quantity; // ไม่รู้จัก quantity
-    this.quantitynum += 1;
-    this.sumPrice -= price;
-    this.getsumPrice;
-    this.cart.pop();
-    this.counter = this.cart.length;  //บอกจำนวนใน cart
-    //this.productService.getSomeproducts(id).quantity = this.quantitynum;
+    //this.quantitynum += 1;
+    this.sumPrice -= this.backupcart.price;
+    this.counter = this.cart.length;
+    //this.productService.getSomeproducts(this.backupcart.id).quantity = this.quantitynum;
   }
 
   getCounter(){
@@ -53,7 +51,6 @@ export class CartService {
   }
   
   
-
 }
 
 

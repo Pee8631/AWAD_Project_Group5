@@ -10,18 +10,22 @@ import { NumberValueAccessor } from '@angular/forms';
 export class CartComponent implements OnInit {
 
   cart : productsType = []
+  delcart : number = 0;
   constructor(private cartService: CartService) { 
     this.cart = this.cartService.getCart();
   }
 
   ngOnInit(): void {
+    this.delcart = 0
   }
 
   getsumPrice(){
     return this.cartService.getsumPrice();
   }
 
-  deleteCart(id: number,price: number){
-    return this.cartService.deleteCart(id,price);
+  deleteCart(){
+    this.delcart = 1;
+    return this.cartService.deleteCart();
   }
+
 }

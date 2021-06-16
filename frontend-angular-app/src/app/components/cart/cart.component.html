@@ -1,4 +1,5 @@
-<app-mynavbar></app-mynavbar>
+<app-mynavbar [delcart] = "delcart"></app-mynavbar>
+
 <br>
 <h2>รถเข็นของคุณ</h2>
 <div class="table-responsive-md">
@@ -17,7 +18,6 @@
                 <td>{{item.type}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.price}}</td>
-
             </tr>
         </tbody>
     </table>
@@ -34,6 +34,8 @@
     <div class="col-md-5"></div>
         <div class="col-md-6" >
             <button  type="submit" class="btn btn-primary" routerLink="/address" routerLinkActive="active">ตกลง</button>&nbsp;&nbsp;
+
+            <button  type="reset" class="btn btn-primary" (click) = "deleteCart()" >ลบคำสั่งซื้อ</button>&nbsp;&nbsp;
         
             <button  type="reset" class="btn btn-primary" routerLink="/products" routerLinkActive="active">ย้อนกลับ</button>
         </div>

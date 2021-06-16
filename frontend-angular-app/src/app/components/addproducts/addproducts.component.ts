@@ -10,15 +10,15 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AddproductsComponent implements OnInit {
 
-  productType: string[] = ['CPU','RAM','HDD','Mainboad'];
+  productType: string[] = ['food', 'clothing', 'medicine', 'electric equipment'];
 
   productForm = new FormGroup({
     type: new FormControl('',[Validators.required]),
     id: new FormControl('',[Validators.required]),
     name: new FormControl('',[Validators.required]),
     detail: new FormControl('',[Validators.required]),
-    quantity: new FormControl('',[Validators.required]),
-    price: new FormControl('',[Validators.required]),
+    quantity: new FormControl('',[Validators.required ,Validators.min(0)]),
+    price: new FormControl('',[Validators.required ,Validators.min(0)]),
     file: new FormControl('',[Validators.required]),
     img: new FormControl('',[Validators.required]),
   });
