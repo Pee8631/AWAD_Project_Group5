@@ -11,6 +11,7 @@ export class CartService {
   sumPrice: number = 0;
   quantitynum: number = 0;
   cart: productsType = [];
+  backupcart: productsType = [];
 
   constructor(private productService: ProductService) { }
 
@@ -28,16 +29,14 @@ export class CartService {
 
   deleteCart(id: number,price: number){
     console.log(id);
-    console.log(this.productService.getSomeproducts(id));
-    this.quantitynum = this.productService.getSomeproducts(id).quantity; // ไม่รู้จัก quantity
+    //console.log(this.productService.getSomeproducts(id).quantity);
+    //this.quantitynum = this.productService.getSomeproducts(id).quantity; // ไม่รู้จัก quantity
     this.quantitynum += 1;
-    console.log('Price = '+this.sumPrice);
     this.sumPrice -= price;
-    console.log('Price = '+price);
     this.getsumPrice;
     this.cart.pop();
     this.counter = this.cart.length;  //บอกจำนวนใน cart
-    this.productService.getSomeproducts(id).quantity = this.quantitynum;
+    //this.productService.getSomeproducts(id).quantity = this.quantitynum;
   }
 
   getCounter(){

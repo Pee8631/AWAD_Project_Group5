@@ -8,7 +8,6 @@
                 <th>ID.</th>
                 <th>Type</th>
                 <th>Name</th>
-                <th>Detail</th>
                 <th>Price</th>
                 <th>Delete</th>
             </tr>
@@ -18,7 +17,6 @@
                 <td scope="row">{{item.id}}</td>
                 <td>{{item.type}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.quantity}}</td>
                 <td>{{item.price}}</td>
                 <td><button type="delete" class="btn btn-primary" (click) = "deleteCart(i,item.price)">Delete</button></td>
 
@@ -36,5 +34,7 @@
 <div class="row" >
     <div class="col-md-12">
         <button  type="submit" class="btn btn-primary" routerLink="/address" routerLinkActive="active">Submit</button>
+        <button  type="reset" class="btn btn-primary" routerLink="/products" routerLinkActive="active">back</button>
     </div>
+
 </div>

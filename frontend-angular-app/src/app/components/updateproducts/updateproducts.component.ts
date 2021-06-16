@@ -12,56 +12,56 @@ import { productsType } from 'src/app/products.model';
 
 export class UpdateproductsComponent implements OnInit {
 
-  productType: string[] = ['CPU','RAM','HDD','Mainboad'];
+  productType: string[] = ['CPU', 'RAM', 'HDD', 'Mainboad'];
 
   productForm = new FormGroup({
-    type: new FormControl('',[Validators.required]),
-    id: new FormControl('',[Validators.required]),
-    name: new FormControl('',[Validators.required]),
-    detail: new FormControl('',[Validators.required]),
-    quantity: new FormControl('',[Validators.required]),
-    price: new FormControl('',[Validators.required]),
-    file: new FormControl('',[Validators.required]),
-    img: new FormControl('',[Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    id: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    detail: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    file: new FormControl('', [Validators.required]),
+    img: new FormControl('', [Validators.required]),
   });
 
-  products : productsType = [];
-  numid : number;
+  numid: number;
   previewLoaded: boolean = false;
 
-  constructor(private ps : ProductService ,private router: Router) {
+  constructor(private ps: ProductService, private router: Router) {
     this.numid = this.ps.getupdateProducts();
-    if(this.numid){
-      this.onLoadingOnlyOne(this.numid);
-    }
-    else{
-      this.router.navigate(['/showproducts']);
-    }
-    
-   }
+    //this.onLoadingOnlyOne(this.numid);
+  }
 
   ngOnInit(): void {
   }
 
-  updateProduct(){
-    this.ps.putProducts(this.numid, this.products).subscribe(
-      data => {
-        console.log(data)
-        alert('Product updated successfully');
-        //this.productForm.reset();
-        this.router.navigate(['/showproducts']);
-      },
-      err =>{
-        console.log(err);
-      });
+  updateProduct() {
+    if (this.productForm.value.name != "" || this.productForm.value.id != "" || this.productForm.value.name != "" 
+    || this.productForm.value.detail != "" || this.productForm.value.quantity != "" || this.productForm.value.price != "") {
+      this.ps.putProducts(this.numid, this.productForm.value).subscribe(
+        data => {
+          console.log(data)
+          alert('Product updated successfully');
+          //this.productForm.reset();
+          this.router.navigate(['/showproducts']);
+        },
+        err => {
+          console.log(err);
+        });
+    }
+    else{
+      alert('Please put every fleid')
+    }
   }
 
-  onLoadingOnlyOne(id : number){
+  /*onLoadingOnlyOne(id : number){
     try {
       this.ps.getOneProducts(id).subscribe(
         data => {
         console.log(data);
         this.products = data;
+        
       },
       err => {
         console.log(err)
@@ -70,26 +70,26 @@ export class UpdateproductsComponent implements OnInit {
     }catch (error) {
       console.log(error)
     }
-  }
+  }*/
 
-  resetForm(){
-    this.onLoadingOnlyOne(this.numid);
+  resetForm() {
+    //this.onLoadingOnlyOne(this.numid);
     this.previewLoaded = false;
   }
 
-  showproduct(){
+  showproduct() {
     this.router.navigate(['/showproducts'])
   }
 
-  onChangeImg(e:any){
-    if(e.target.files.length > 0){
+  onChangeImg(e: any) {
+    if (e.target.files.length > 0) {
       const file = e.target.files[0];
       var pattern = /image-*/;
       const reader = new FileReader();
-      if(!file.type.match(pattern)) {
+      if (!file.type.match(pattern)) {
         alert('invalid format');
         this.productForm.reset();
-      }else{
+      } else {
         reader.readAsDataURL(file);
         reader.onload = () => {
           this.previewLoaded = true;
@@ -102,6 +102,6 @@ export class UpdateproductsComponent implements OnInit {
   }
 
 
-  
+
 
 }
