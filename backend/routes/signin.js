@@ -12,6 +12,10 @@ var Schema = require("mongoose").Schema;
 const userSchema = Schema({
     username: String,
     password: String,
+    gender: String,
+    name: String,
+    email : String,
+    Tel : String
 }, {
     collection: 'users'
 });
@@ -43,7 +47,7 @@ const findUser = (username) =>{
                 reject(new Error('Cannot find username!'));
             }else{
                 if(data){
-                    resolve({id: data._id, username: data.username, password: data.password})
+                    resolve({id: data._id, username: data.username, password: data.password, gender:data.gender, name: data.name , email: data.email, Tel: data.Tel})
                 }else{
                     reject(new Error('Cannot find username!'));
                 }
@@ -71,6 +75,7 @@ router.route('/signin')
             const result = await findUser(playload.username);
             const loginstatus = await compareHash(playload.password, result.password);
             const status = loginstatus.status;
+            console.log("re " , result);
 
             if(status){
                 const token = jwt.sign(result, key, {expiresIn: 60*5});

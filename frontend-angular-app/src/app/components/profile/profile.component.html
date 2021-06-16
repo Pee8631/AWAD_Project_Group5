@@ -2,49 +2,49 @@
 <div class="card">
     
     <div class="card-body">
-        <h4 class="card-title"></h4><br>
+        <h4 class="card-title">Profile</h4>
         <div class="row">
             <div class="col-md-2">
-                <img src="" class="img-thumbnail" src="{{profile.img}}" alt="Your Image">
+                
             </div>
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        โปรไฟล์ผู้ใช้
+                        Profile
                     </div>
                     <div class="card-body">
 
                         <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> ชื่อผู้ใช้:</div>
+                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Username:</div>
                             <div class="col-lg-10 text-left">
-                                {{profile.username}}
+                                {{getUser()}}
                             </div>
                         </div>
                         
                         <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> ชื่อ-สกุล :</div>
+                            <div class="col-lg-2"><i class="fa fa-user-circle" aria-hidden="true"></i> Name:</div>
                             <div class="col-lg-10 text-left">
-                                {{profile.name}}
+                                {{getName()}}
                             </div>
                         </div>
 
                         <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fas fa-venus-mars" aria-hidden="true"></i> เพศ :</div>
+                            <div class="col-lg-2"><i class="fas fa-venus-mars" aria-hidden="true"></i> Gender:</div>
                             <div class="col-lg-10 text-left">
-                                {{profile.gender}}
+                                {{getGender()}}
                             </div>
                         </div>
                     
                         <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-at" aria-hidden="true"></i> E-mail :</div>
+                            <div class="col-lg-2"><i class="fa fa-at" aria-hidden="true"></i> Email:</div>
                             <div class="col-sm-10 text-left">
-                                {{profile.email}}
+                                {{getEmail()}}
                             </div>
                         </div>
                         <div class="row" style="padding: 5px;">
-                            <div class="col-lg-2"><i class="fa fa-phone" aria-hidden="true"></i> โทรศัพท์. :</div>
+                            <div class="col-lg-2"><i class="fa fa-phone" aria-hidden="true"></i> Phone:</div>
                             <div class="col-lg-10 text-left">
-                                {{profile.phone}}
+                                {{getTel()}}
                             </div>
                         </div>
                         

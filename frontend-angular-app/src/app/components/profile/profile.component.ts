@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'angular-web-storage';
 
-interface user_profile{
-  username: string,
-  name: string,
-  gender:string,
-  email: string,
-  phone: string,
-  img: string
-}
 
 @Component({
   selector: 'app-profile',
@@ -16,20 +9,34 @@ interface user_profile{
 })
 export class ProfileComponent implements OnInit {
 
-  profile: user_profile
+  
 
-  constructor() { 
-    this.profile = {
-      username: '',
-      name: '',
-      gender:'',
-      email: '',
-      phone: '',
-      img: 'https://kimtaehyung768069742.files.wordpress.com/2018/09/e0b981e0b897e0b8aee0b8a2e0b8ade0b887e0b8ade0b988e0b8b2e0b8b2.jpg',
-    }
-  }
+  constructor(private local: LocalStorageService) {
+  } 
+    
 
   ngOnInit(): void {
   }
+
+  getUser() {
+
+    return this.local.get('user').result.username
+  }
+  getName(){
+    return this.local.get('user').result.name
+  }
+
+  getGender(){
+    return this.local.get('user').result.gender
+  }
+
+  getEmail(){
+    return this.local.get('user').result.email
+  }
+
+  getTel(){
+    return this.local.get('user').result.Tel
+  }
+
 
 }

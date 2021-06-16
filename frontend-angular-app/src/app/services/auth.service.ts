@@ -11,29 +11,30 @@ export class AuthService {
 
   constructor(private http: HttpClient, public local: LocalStorageService) { }
 
-  signIn(authData: any){
-    return this.http.post<any>('http://localhost:3000/login/signin', authData)
-    .pipe(map(data => {
-        if(data){
-          this.local.set('user', data, 1, 'w');
-          console.log(this.local.get('user'));
-        }
-        return data;
-      }));
+  signIn(authData: any) {
+    console.log(authData);
+    return this.http.post<any>('http://localhost:3000/login/signin', authData).pipe(map(data => {
+      console.log(data);
+      
+      if (data) {
+        this.local.set('user', data,1,'w') 
+        console.log(this.local.get('user'))
+      }
+      return data
+    }))
   }
+
   signUp(authData: any){
-    return this.http.post<any>('http://localhost:3000/user/signup', authData);
+    return this.http.post<any>('http://localhost:3000/user/signup', authData)
+    .pipe(map(data=>{
+      if(data){
+        
+        console.log(data)
+      }
+      return data;
+    }));
   }
 
 
-  getProfile(){
-    return this.http.get<any>('http://localhost:3000/user/profile')
-      .pipe(map(data => {
-        if (data) {
-          this.user = data;
-          console.log(this.user);
-        }
-        return this.user;
-      }));
-  }
+
 }
