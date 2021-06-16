@@ -48,8 +48,14 @@
 
                             <div class="row">
                                 <div class="col-md-12" >
-                                    <button type="button" class="btn btn-primary" (click)="addPayment()">Submit</button>&nbsp;
+                                    <button routerLink="/products" routerLinkActive="active" type="button" class="btn btn-primary" (click)="addPayment()">Submit</button>&nbsp;
                                     <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-md-12">
+                                <br>
+                                    <button  type="submit" class="btn btn-primary" routerLink="/address" routerLinkActive="active">Back</button>
                                 </div>
                             </div>
                         </div>
