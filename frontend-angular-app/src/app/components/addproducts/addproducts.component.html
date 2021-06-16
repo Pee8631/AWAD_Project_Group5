@@ -2,7 +2,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Add Product</h4>
+        <h4 class="card-title">เพิ่มสินค้า</h4>
         <div class="row">
             <div class="col-md-2">
 
@@ -11,12 +11,12 @@
                 <form [formGroup]="productForm">
                     <div class="card">
                         <div class="card-header">
-                            Product Form
+                            รายละเอียดสินค้า
                         </div>
                         <div class="card-body" >
                             <div class="row">
                                 <div class="col-md-3">
-                                    Product Type:
+                                    ชนิดของสินค้า :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -29,7 +29,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Product ID:
+                                    รหัสสินค้า :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -39,7 +39,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Product Name:
+                                    ชื่อสินค้า :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Product Detail:
+                                    รายละเอียดสินค้า :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Quantity:
+                                    จำนวน :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -69,7 +69,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Price:
+                                    ราคา :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -79,7 +79,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Image:
+                                    รูปภาพสินค้า :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -102,9 +102,9 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9" >
-                                    <button type="button" class="btn btn-primary" (click)="addProduct()">Add</button>&nbsp;
-                                    <button type="reset" class="btn btn-danger">Reset</button>&nbsp;
-                                    <button routerLink="/showproducts" routerLinkActive="active" type="reset" class="btn btn-primary" (click)="showproduct()">Show Product</button>
+                                    <button type="button" class="btn btn-primary" (click)="addProduct()">เพิ่มสินค้า</button>&nbsp;
+                                    <button type="reset" class="btn btn-danger">ล้าง</button>&nbsp;
+                                    <button routerLink="/showproducts" routerLinkActive="active" type="reset" class="btn btn-primary" (click)="showproduct()">แสดงสินค้า</button>
                                 </div>
                             </div>
                         </div>

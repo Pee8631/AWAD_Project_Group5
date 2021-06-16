@@ -2,7 +2,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Add Address</h4>
+        <h4 class="card-title">กรอกที่อยู่</h4>
         <div class="row">
             <div class="col-md-2">
 
@@ -11,12 +11,12 @@
                 <form [formGroup]="addressForm">
                     <div class="card">
                         <div class="card-header">
-                            Address Form
+                            ที่อยู่จัดส่งสินค้า
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
-                                    Address:
+                                    ที่อยู่ :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Subdistrict:
+                                    ตำบล :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -36,7 +36,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    District:
+                                    อำเภอ :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Province:
+                                    จังหวัด :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Postal Number:
+                                    รหัสไปรษณีย์ :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -68,8 +68,8 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9" >
-                                    <button routerLink="/payments" routerLinkActive="active" type="button" class="btn btn-primary" (click)="addAddress()">Add</button>&nbsp;
-                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                    <button type="button" class="btn btn-primary" (click)="addAddress()">ตกลง</button>&nbsp;
+                                    <button type="reset" class="btn btn-danger">ล้าง</button>
                                 </div>
                                 
                             </div>

@@ -2,7 +2,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Payment</h4>
+        <h4 class="card-title">การชำระเงิน</h4>
         <div class="row">
             <div class="col-md-2">
 
@@ -11,12 +11,12 @@
                 <form [formGroup]="paymentForm">
                     <div class="card">
                         <div class="card-header">
-                            Payment Form
+                            แบบฟอร์มชำระเงิน
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
-                                    Bank Account:
+                                    บัญชีธนาคาร :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    Account Number:
+                                    หมายเลขบัญชี :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -37,7 +37,7 @@
 
                             <div class="row">
                                 <div class="col-md-3">
-                                    Account Name:
+                                    ชื่อบัญชี :
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -49,17 +49,12 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9" >
-                                    <button routerLink="/products" routerLinkActive="active" type="button" class="btn btn-primary" (click)="addPayment()">Submit</button>&nbsp;
-                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                    <button type="button" class="btn btn-primary" (click)="addPayment()">ตกลง</button>&nbsp;
+                                    <button type="reset" class="btn btn-danger">ล้าง</button>
                                 </div>
                             </div>
 
-                            <div class="row" >
-                                <div class="col-md-12">
-                                <br>
-                                    <button  type="submit" class="btn btn-primary">Back</button>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </form>
