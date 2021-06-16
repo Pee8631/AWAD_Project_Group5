@@ -173,6 +173,23 @@ const getProduct = () => {
     });
 }
 
+const getProductID = (id) => {
+    return new Promise ((resolve,reject) => {
+        Product.find({id : id}, (err, data) => {
+            if(err){
+                reject(new Error('Cannot get product!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot get product!'));
+                }
+                
+            }
+        })
+    });
+}
+
 
 const deleteProduct = (pid) => {
     return new Promise ((resolve,reject) => {
@@ -191,6 +208,10 @@ const deleteProduct = (pid) => {
         })
     })
 }
+
+
+
+
 expressApp.put('/products/put',(req,res) =>{
     console.log('put');
     putProduct(req.body)
@@ -207,6 +228,19 @@ expressApp.delete('/products/delete/:id',(req,res) =>{
     const pid = req.params.id
     console.log('delete');
     deleteProduct(pid)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+expressApp.get('/products/getid/:id',(req,res) =>{
+    const id = req.params.id
+    console.log('delete');
+    getProductID(id)
         .then(result => {
             console.log(result);
             res.status(200).json(result);
