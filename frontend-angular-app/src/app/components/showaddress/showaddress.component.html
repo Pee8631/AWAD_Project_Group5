@@ -1,0 +1,31 @@
+<app-mynavbar></app-mynavbar>
+
+<div class="container-fluid" style="margin-top:30px">           
+    <div class="row">
+        <div class="col-md-12">
+            <h2>รายการสินค้า</h2>
+            <div class="table-responsive-md">
+                <table class="table table-striped table-inverse">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>ที่อยู่</th>
+                            <th>ตำบล</th>
+                            <th>อำเภอ</th>
+                            <th>จังหวัด</th>
+                            <th>รหัสไปรษณีย์</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of address; index as i">
+                            <td>{{item.address}}</td>
+                            <td>{{item.subdistrict}}</td>
+                            <td>{{item.district}}</td>
+                            <td>{{item.province}}</td>
+                            <td>{{item.postal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,4 +17,15 @@ export class PaymentService {
         return data;
       }));
   }
+
+  getPayment(){
+    return this.http.get<any>('http://localhost:3000/payment/get')
+      .pipe(map(data => {
+        if (data) {
+          this.payment = data;
+          console.log(this.payment);
+        }
+        return this.payment;
+      }));
+  }
 }

@@ -11,6 +11,8 @@ import { CartComponent } from './components/cart/cart.component' ;
 import { PaymentComponent } from './components/payment/payment.component' ;
 import { StatusproductsComponent } from './components/statusproducts/statusproducts.component';
 import { ProfileComponent } from './components/profile/profile.component' ;
+import { ShowaddressComponent } from './components/showaddress/showaddress.component';
+import { ShowpaymentComponent } from './components/showpayment/showpayment.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path:'address', component: AddressComponent},
   {path:'showproducts', component: ShowproductsComponent},
   {path:'updateproducts', component: UpdateproductsComponent},
+  {path:'showaddress', component: ShowaddressComponent},
+  {path:'showpayment', component: ShowpaymentComponent},
   {path:'',
     redirectTo: 'signin',
     pathMatch: 'full'

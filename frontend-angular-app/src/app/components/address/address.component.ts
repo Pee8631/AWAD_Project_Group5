@@ -31,7 +31,7 @@ export class AddressComponent implements OnInit {
           console.log(data)
           alert('เพิ่มที่อยู่เรียบร้อยแล้ว');
           this.addressForm.reset();
-          this.router.navigate(['/payment'])
+          this.router.navigate(['/payments'])
         },
         err =>{
           console.log(err);

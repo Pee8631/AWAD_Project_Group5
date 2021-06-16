@@ -27,7 +27,7 @@ const userSchema = Schema({
 var Schema = require("mongoose").Schema;
 const paymentSchema = Schema({
     bank: String,
-    accountID: String,
+    accountID: Number,
     accountName: String
    
 }, {
@@ -225,9 +225,9 @@ const getProductID = (id) => {
 }
 
 
-const getAddress = (add) => {
+const getAddress = () => {
     return new Promise ((resolve,reject) => {
-        Address.find({address : add}, (err, data) => {
+        Address.find({}, (err, data) => {
             if(err){
                 reject(new Error('Cannot get address!'));
             }else{
@@ -242,9 +242,9 @@ const getAddress = (add) => {
     });
 }
 
-const getPayment = (banks) => {
+const getPayment = () => {
     return new Promise ((resolve,reject) => {
-        Payment.find({bank : banks}, (err, data) => {
+        Payment.find({}, (err, data) => {
             if(err){
                 reject(new Error('Cannot get payment!'));
             }else{
@@ -278,7 +278,7 @@ const deleteProduct = (pid) => {
     })
 }
 
-expressApp.get('/payment/getbank/:bank',(req,res) =>{
+expressApp.get('/payment/get/',(req,res) =>{
     const banks = req.params.bank
     console.log('get');
     getPayment(banks)
@@ -335,7 +335,7 @@ expressApp.get('/products/getid/:id',(req,res) =>{
         })
 });
 
-expressApp.get('/address/getadd/:address',(req,res) =>{
+expressApp.get('/address/get/',(req,res) =>{
     const add = req.params.address
     console.log('get');
     getAddress(add)

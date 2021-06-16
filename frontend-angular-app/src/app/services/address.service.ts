@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AddressService {
-  address:any
+  address : any
 
   
   constructor(private http: HttpClient) { }
@@ -17,4 +17,16 @@ export class AddressService {
         return data;
       }));
   }
+
+  getAddress(){
+    return this.http.get<any>('http://localhost:3000/address/get')
+      .pipe(map(data => {
+        if (data) {
+          this.address = data;
+          console.log(this.address);
+        }
+        return this.address;
+      }));
+  }
+
 }

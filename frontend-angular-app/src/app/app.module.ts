@@ -18,6 +18,8 @@ import { MynavbarComponent } from './components/mynavbar/mynavbar.component';
 //import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateproductsComponent } from './components/updateproducts/updateproducts.component';
+import { ShowaddressComponent } from './components/showaddress/showaddress.component';
+import { ShowpaymentComponent } from './components/showpayment/showpayment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { UpdateproductsComponent } from './components/updateproducts/updateprodu
     StatusproductsComponent,
     AddressComponent,
     MynavbarComponent,
-    UpdateproductsComponent
+    UpdateproductsComponent,
+    ShowaddressComponent,
+    ShowpaymentComponent
 //    NavbarComponent
   ],
   imports: [
