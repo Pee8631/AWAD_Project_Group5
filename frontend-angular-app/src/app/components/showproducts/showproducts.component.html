@@ -27,7 +27,11 @@
                             <td>{{item.quantity}}</td>
                             <td>{{item.price}}</td>
                             <td><img [src]="item.img" style="height:150px;"></td>
-                            <td><button type="reset" class="btn btn-primary" (click) = "deleteProduct(item.id)">Delete</button></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" (click) = "addProduct()">Add</button>&nbsp;
+                                <button type="button" class="btn btn-danger" (click) = "updateProduct(item.id)">Update</button>&nbsp;
+                                <button type="reset" class="btn btn-primary" (click) = "deleteProduct(item.id)">Delete</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { productsType } from 'src/app/products.model';
 
 @Component({
-  selector: 'app-addproducts',
-  templateUrl: './addproducts.component.html',
-  styleUrls: ['./addproducts.component.css']
+  selector: 'app-updateproducts',
+  templateUrl: './updateproducts.component.html',
+  styleUrls: ['./updateproducts.component.css']
 })
-export class AddproductsComponent implements OnInit {
+
+export class UpdateproductsComponent implements OnInit {
 
   productType: string[] = ['CPU','RAM','HDD','Mainboad'];
 
@@ -23,29 +25,59 @@ export class AddproductsComponent implements OnInit {
     img: new FormControl('',[Validators.required]),
   });
 
+  products : productsType = [];
+  numid : number;
   previewLoaded: boolean = false;
-  
-  products: any;
 
   constructor(private ps : ProductService ,private router: Router) {
+    this.numid = this.ps.getupdateProducts();
+    if(this.numid){
+      this.onLoadingOnlyOne(this.numid);
+    }
+    else{
+      this.router.navigate(['/showproducts']);
+    }
     
    }
 
   ngOnInit(): void {
   }
 
-
-
-  addProduct(){
-    this.ps.addProduct(this.productForm.value).subscribe(
+  updateProduct(){
+    this.ps.putProducts(this.numid, this.products).subscribe(
       data => {
         console.log(data)
-        alert('Product added successfully');
-        this.productForm.reset();
+        alert('Product updated successfully');
+        this.router.navigate(['/showproducts']);
       },
       err =>{
         console.log(err);
       });
+  }
+
+  onLoadingOnlyOne(id : number){
+    try {
+      this.ps.getOneProducts(id).subscribe(
+        data => {
+        console.log(data);
+        this.products = data;
+      },
+      err => {
+        console.log(err)
+      });
+
+    }catch (error) {
+      console.log(error)
+    }
+  }
+
+  resetForm(){
+    this.onLoadingOnlyOne(this.numid);
+    this.previewLoaded = false;
+  }
+
+  showproduct(){
+    this.router.navigate(['/showproducts'])
   }
 
   onChangeImg(e:any){
@@ -66,31 +98,6 @@ export class AddproductsComponent implements OnInit {
         }
       }
     }
-  }
-
-  updateProduct(id : number,body : []){
-    try {
-    this.ps.putProducts(id ,body).subscribe(
-      data => {
-        console.log(data);
-        this.resetForm();
-      },
-      err =>{
-        console.log(err);
-
-      });
-    }catch (error) {
-      console.log(error);
-    }
-  }
-
-  resetForm(){
-    this.productForm.reset();
-    this.previewLoaded = false;
-  }
-
-  showproduct(){
-    this.router.navigate(['/showproducts'])
   }
 
 }

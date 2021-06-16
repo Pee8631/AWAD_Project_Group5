@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 export class ProductService {
 
   products: any;
+  updateid : number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,35 @@ export class ProductService {
       }));
   }
 
+  getOneProducts(id: number){
+    return this.http.get<any>('http://localhost:3000/products/getid/' + id)
+      .pipe(map(data => {
+        if (data) {
+          this.products = data;
+          console.log(this.products);
+        }
+        return this.products;
+      }));
+  }
+
+  setupdateProducts(id: number){
+    this.updateid = id;
+  }
+
+  getupdateProducts(){
+    return this.updateid;
+  }
+
+  putProducts(id: number,body: any){
+    return this.http.put<any>('http://localhost:3000/products/put/' + id, body)
+      .pipe(map(data => {
+        if (data) {
+          this.products = data;
+          console.log(this.products);
+        }
+        return this.products;
+      }));
+  }
 
   deleteProducts(id: number){
     console.log(id)

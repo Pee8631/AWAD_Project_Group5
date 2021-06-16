@@ -6,6 +6,7 @@ import { SignupComponent } from './components/signup/signup.component' ;
 import { ProductsComponent } from './components/products/products.component' ;
 import { ShowproductsComponent } from './components/showproducts/showproducts.component';
 import { AddproductsComponent } from './components/addproducts/addproducts.component' ;
+import { UpdateproductsComponent } from './components/updateproducts/updateproducts.component';
 import { CartComponent } from './components/cart/cart.component' ;
 import { PaymentComponent } from './components/payment/payment.component' ;
 import { StatusproductsComponent } from './components/statusproducts/statusproducts.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'profile', component: ProfileComponent},
   {path:'address', component: AddressComponent},
   {path:'showproducts', component: ShowproductsComponent},
+  {path:'updateproducts', component: UpdateproductsComponent},
   {path:'',
     redirectTo: 'signin',
     pathMatch: 'full'

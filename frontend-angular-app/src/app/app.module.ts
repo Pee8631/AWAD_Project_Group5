@@ -17,6 +17,7 @@ import { AddressComponent } from './components/address/address.component';
 import { MynavbarComponent } from './components/mynavbar/mynavbar.component';
 //import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateproductsComponent } from './components/updateproducts/updateproducts.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     StatusproductsComponent,
     AddressComponent,
-    MynavbarComponent
+    MynavbarComponent,
+    UpdateproductsComponent
 //    NavbarComponent
   ],
   imports: [
