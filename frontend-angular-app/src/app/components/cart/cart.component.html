@@ -10,6 +10,7 @@
                 <th>Name</th>
                 <th>Detail</th>
                 <th>Price</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,8 @@
                 <td>{{item.name}}</td>
                 <td>{{item.quantity}}</td>
                 <td>{{item.price}}</td>
+                <td><button type="delete" class="btn btn-primary" (click) = "deleteCart(i,item.price)">Delete</button></td>
+
             </tr>
         </tbody>
     </table>
@@ -27,5 +30,11 @@
 <div class="row">
     <div class="col-md-12 text-right">
         <h4>Total : {{getsumPrice()}}</h4>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col-md-12">
+        <button  type="submit" class="btn btn-primary" routerLink="/address" routerLinkActive="active">Submit</button>
     </div>
 </div>

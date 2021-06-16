@@ -13,14 +13,15 @@ export class SignupComponent implements OnInit {
   profileForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
-    name : new FormControl(''),
+    name: new FormControl(''),
     gender: new FormControl(''),
     sex: new FormControl(''),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    Tel : new FormControl('')
-});
-get email() {return this.profileForm.get('email');
-}
+    email: new FormControl('', [Validators.required, Validators.email]),
+    Tel: new FormControl('')
+  });
+  get email() {
+    return this.profileForm.get('email');
+  }
 
 
   constructor(private auth: AuthService, private router: Router) { }
@@ -28,23 +29,31 @@ get email() {return this.profileForm.get('email');
   ngOnInit(): void {
   }
 
-  signup(){
-    console.log(this.profileForm.value);
-    this.auth.signUp(this.profileForm.value).subscribe(
-      data => {
-        if(data.message)
-          alert(data.message);
-        
-      },err => {
-        console.log(err);
+  signup() {
+    try {
+      console.log(this.profileForm.value);
+      this.auth.signUp(this.profileForm.value).subscribe(
+        data => {
+          if (data.message)
+            alert(data.message);
 
-      });
-  }
-  
-    signin(){
+        }, err => {
+          console.log(err);
+
+        });
+      alert('Product added successfully');
       this.router.navigate(['./signin']);
+    } catch (error) {
+      console.log(error);
     }
-  
+
+
+  }
+
+  signin() {
+    this.router.navigate(['./signin']);
+  }
+
 
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service'
 import { productsType } from 'src/app/products.model';
+import { NumberValueAccessor } from '@angular/forms';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,5 +19,9 @@ export class CartComponent implements OnInit {
 
   getsumPrice(){
     return this.cartService.getsumPrice();
+  }
+
+  deleteCart(id: number,price: number){
+    return this.cartService.deleteCart(id,price);
   }
 }
