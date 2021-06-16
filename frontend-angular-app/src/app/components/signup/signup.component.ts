@@ -30,6 +30,8 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
+    if(this.profileForm.value.username != "" && this.profileForm.value.password != "" && this.profileForm.value.name != "" 
+    && this.profileForm.value.gender != "" && this.profileForm.value.sex != "" && this.profileForm.value.email != "" && this.profileForm.value.Tel != ""){
     try {
       console.log(this.profileForm.value);
       this.auth.signUp(this.profileForm.value).subscribe(
@@ -41,12 +43,15 @@ export class SignupComponent implements OnInit {
           console.log(err);
 
         });
-      alert('Product added successfully');
+      alert('สมัครสมาชิกเรียบร้อยแล้ว');
       this.router.navigate(['./signin']);
     } catch (error) {
       console.log(error);
     }
-
+  }
+  else{
+    alert('กรุณาใส่ข้อมูลให้ครบทุกช่อง');
+  }
 
   }
 
