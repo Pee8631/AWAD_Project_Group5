@@ -98,9 +98,10 @@
                                     <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.productForm.value.img" style="height:150px;">
                                 </div>
                             </div>
-
+                            <br>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-9" >
                                     <button type="button" class="btn btn-primary" (click)="addProduct()">Add</button>&nbsp;
                                     <button type="reset" class="btn btn-danger">Reset</button>&nbsp;
                                     <button routerLink="/showproducts" routerLinkActive="active" type="reset" class="btn btn-primary" (click)="showproduct()">Show Product</button>
