@@ -30,4 +30,12 @@ export class ShowproductsComponent implements OnInit {
     }
   }
 
+  deleteField(id : number){
+    try {
+      this.ps.deleteProducts(id);
+    }catch (error) {
+      console.log(error)
+    }
+  }
+
 }

@@ -29,9 +29,14 @@ export class ProductService {
       }));
   }
 
-  getSomeproducts(p_id:number){
-    console.log(this.products[p_id]);
-    return this.products[p_id];
+  deleteProducts(id:number){
+    this.http.delete<any>('http://localhost:3000/products/delete?:id')
+    
+  }
+
+  getSomeproducts(id:number){
+    console.log(this.products[id]);
+    return this.products[id];
   }
 
 }
