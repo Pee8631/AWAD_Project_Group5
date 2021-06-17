@@ -114,7 +114,7 @@ const deleteProduct = (pid) => {
 }
 
 
-router.route('/products/put/:id').put((req,res) =>{
+router.route('/put/:id').put((req,res) =>{
     const id = req.params.id
     //const name = req.params.name
     console.log('put');
