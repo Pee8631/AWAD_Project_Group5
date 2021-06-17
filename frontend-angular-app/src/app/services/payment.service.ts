@@ -28,4 +28,14 @@ export class PaymentService {
         return this.payment;
       }));
   }
+
+  
+  deletepayment(id: number){
+    console.log(id)
+    return this.http.delete<any>('http://localhost:3000/payment/delete/' + id)
+      .pipe(map(data => {
+        return data;
+        
+      }));
+  }
 }

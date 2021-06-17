@@ -170,6 +170,23 @@ const addAddress = (address) => {
         });
     });
 }
+const deleteBank = (accountID) => {
+    return new Promise ((resolve,reject) => {
+            Payment.deleteOne({accountID: accountID}, (err, data) =>{
+            if(err){
+                reject(new Error('delete bank!'));
+            }else{
+                if(data){
+                    resolve(data)
+                }else{
+                    reject(new Error('Cannot bank product!'));
+                }
+                
+            }
+
+        })
+    })
+}
 
 
 const updateProduct = async (id,data) => {
@@ -224,6 +241,18 @@ const getProductID = (id) => {
     });
 }
 
+expressApp.delete('/payment/delete/:accountID',(req,res) =>{
+    const accountID = req.params.accountID
+    console.log('delete');
+    deleteBank(accountID)
+        .then(result => {
+            console.log(result);
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
 
 const getAddress = () => {
     return new Promise ((resolve,reject) => {

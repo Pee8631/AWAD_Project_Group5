@@ -11,6 +11,7 @@
                             <th>บัญชีธนาคาร</th>
                             <th>หมายเลขบัญชี</th>
                             <th>ชื่อบัญชี</th>
+                            <th>จัดการบัญชี</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -18,6 +19,9 @@
                             <td>{{item.bank}}</td>
                             <td>{{item.accountID}}</td>
                             <td>{{item.accountName}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" (click) = "deletepaymentt(item.accountID)">ลบ</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
