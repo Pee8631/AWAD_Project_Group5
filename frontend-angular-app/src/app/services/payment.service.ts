@@ -12,14 +12,14 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
   addPayment(payment: any){
-    return this.http.post<any>('http://localhost:3000/payment/add', payment)
+    return this.http.post<any>('http://localhost:3000/api/payment/add', payment)
       .pipe(map(data => {
         return data;
       }));
   }
 
   getPayment(){
-    return this.http.get<any>('http://localhost:3000/payment/get')
+    return this.http.get<any>('http://localhost:3000/api/payment/get')
       .pipe(map(data => {
         if (data) {
           this.payment = data;

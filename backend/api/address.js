@@ -69,7 +69,7 @@ router.route('/get/').get((req,res) =>{
         })
 });
 
-router.route('/address/add').post((req,res) =>{
+router.route('/add').post((req,res) =>{
     console.log('add');
     addAddress(req.body)
         .then(result => {
