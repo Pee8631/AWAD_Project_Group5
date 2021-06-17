@@ -15,7 +15,6 @@ export class SignupComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
-    sex: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     Tel: new FormControl('', [Validators.required])
   });
@@ -31,7 +30,7 @@ export class SignupComponent implements OnInit {
 
   signup() {
     if(this.profileForm.value.username != "" && this.profileForm.value.password != "" && this.profileForm.value.name != "" 
-    && this.profileForm.value.gender != "" && this.profileForm.value.sex != "" && this.profileForm.value.email != "" && this.profileForm.value.Tel != ""){
+    && this.profileForm.value.gender != "" && this.profileForm.value.email != "" && this.profileForm.value.Tel != ""){
     try {
       console.log(this.profileForm.value);
       this.auth.signUp(this.profileForm.value).subscribe(
