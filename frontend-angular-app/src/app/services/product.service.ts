@@ -13,14 +13,14 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   addProduct(product: any){
-    return this.http.post<any>('http://localhost:3000/products/add', product)
+    return this.http.post<any>('http://localhost:3000/api/products/add', product)
       .pipe(map(data => {
         return data;
       }));
   }
 
   getProducts(){
-    return this.http.get<any>('http://localhost:3000/products/get')
+    return this.http.get<any>('http://localhost:3000/api/products/get')
       .pipe(map(data => {
         if (data) {
           this.products = data;
@@ -31,7 +31,7 @@ export class ProductService {
   }
 
   getOneProducts(id: number){
-    return this.http.get<any>('http://localhost:3000/products/getid/' + id)
+    return this.http.get<any>('http://localhost:3000/api/products/getid/' + id)
       .pipe(map(data => {
         if (data) {
           this.products = data;
@@ -50,7 +50,7 @@ export class ProductService {
   }
 
   putProducts(id: number, body: any){
-    return this.http.put<any>('http://localhost:3000/products/put/' + id, body)
+    return this.http.put<any>('http://localhost:3000/api/products/put/' + id, body)
       .pipe(map(data => {
         if (data) {
           this.products = data;
@@ -64,7 +64,7 @@ export class ProductService {
 
   deleteProducts(id: number){
     console.log(id)
-    return this.http.delete<any>('http://localhost:3000/products/delete/' + id)
+    return this.http.delete<any>('http://localhost:3000/api/products/delete/' + id)
       .pipe(map(data => {
         return data;
         

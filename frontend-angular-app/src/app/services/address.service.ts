@@ -12,14 +12,14 @@ export class AddressService {
   constructor(private http: HttpClient) { }
 
   addAddress(address: any){
-    return this.http.post<any>('http://localhost:3000/address/add', address)
+    return this.http.post<any>('http://localhost:3000/api/address/add', address)
       .pipe(map(data => {
         return data;
       }));
   }
 
   getAddress(){
-    return this.http.get<any>('http://localhost:3000/address/get')
+    return this.http.get<any>('http://localhost:3000/api/address/get')
       .pipe(map(data => {
         if (data) {
           this.address = data;
