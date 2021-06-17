@@ -22,13 +22,19 @@
             <li class="nav-item">
                 <a routerLink="/statusproducts" routerLinkActive="active" class="btn btn-dark">สถานะของสินค้า</a>
             </li>
-            <li class="nav-item">
+
+            
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03" style=" margin-left: 400px;">
+        <li class="nav-item">
                 <a routerLink="/profile" routerLinkActive="active" class="btn btn-dark">โปรไฟล์ผู้ใช้</a>
             </li>
-        </ul>
         <a routerLink="/cart" class="btn btn-dark">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>รถเข็นของฉัน
             <span class="badge badge-info">{{getCounter() - delcart}}</span>
         </a>
+        <li class="nav-item">
+            <a routerLink="/" routerLinkActive="active" class="btn btn-dark">ออกจากระบบ</a>
+        </li></div>
     </div>
 </nav>
